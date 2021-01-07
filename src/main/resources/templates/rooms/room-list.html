@@ -14,36 +14,61 @@
 
 <body>
 
-<!--<div class="container">-->
+<div class="container">
 
-<!--    <h3>Employee Directory</h3>-->
-<!--    <hr>-->
+    <h3>Hotel Rooms</h3>
+    <hr>
 
-<!--    &lt;!&ndash; Add a search form &ndash;&gt;-->
+    <!-- Add a search form -->
+    <div class="row">
+        <div class="col-md-6 mt-1">
+    <form action="#" th:action="@{/rooms/search}"
+          method="GET" class="form-inline">
 
-<!--    <form action="#" th:action="@{/employees/search}"-->
-<!--          method="GET" class="form-inline">-->
 
 <!--        &lt;!&ndash; Add a button &ndash;&gt;-->
-<!--        <a th:href="@{/employees/showFormForAdd}"-->
+<!--        <a th:href="@{/rooms/showFormForAdd}"-->
 <!--           class="btn btn-primary btn-sm mb-3">-->
 <!--            Add Employee-->
 <!--        </a>-->
+        <div class="form-group">
+            <label for="categories">Categories:</label>
+            `
+            <select name="category" id="categories">
+            <option value=""> -- </option>
+            <option th:each="category : ${categories}"
+                    th:value="${category.id}"
+                    th:utext="${category.name}"/>
+        </select>
+        </div>
 
-<!--        <input type="search"-->
-<!--               name="firstName"-->
-<!--               placeholder="First name"-->
-<!--               class="form-control-sm ml-5 mr-2 mb-3" />-->
+        <div class="form-group">
+            <label for="startDate">Arrival: </label>
+            <input type="date" class="input-sm form-control"
+                   name="startDate"
+                   id="startDate"
+                   placeholder="YYYY/MM/DD"/>
+        </div>
 
-<!--        <input type="search"-->
-<!--               name="lastName"-->
-<!--               placeholder="Last name"-->
-<!--               class="form-control-sm mr-2 mb-3" />-->
+<br>
+        <br>
 
-<!--        <button type="submit"-->
-<!--                class="btn btn-success btn-sm mb-3">Search</button>-->
+        <div class="form-group">
+            <label for="endDate">Departure: </label>
+            <input type="date" class="input-sm form-control"
+                   name="endDate"
+                   id="endDate"
+                   th:value=null
+                   placeholder="YYYY/MM/DD"
+            />
+        </div>
 
-<!--    </form>-->
+        <button type="submit"
+                class="btn btn-success ">Search</button>
+
+    </form>
+        </div>
+    </div>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -89,6 +114,15 @@
     </table>
 
 </div>
+<script>
+    document.getElementById("startDate").min = new Date().toISOString().split("T")[0];
+    document.getElementById("endDate").min = new Date().toISOString().split("T")[0];
+    document.body.addEventListener('input', () => {
+        const val = document.getElementById('startDate')
+        document.getElementById("endDate").min = val.value;
+        console.log(val);
+    });
+</script>
 
 </body>
 </html>

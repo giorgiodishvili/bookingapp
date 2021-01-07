@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -27,12 +28,15 @@ public class OrderController {
     }
 
     @GetMapping("/addOrder")
-    public String showFormForOrder(@RequestParam("roomId")Long id,Model theModel) {
+    public String showFormForOrder(@RequestParam("roomId")Long id,Model model) {
 
         // create model attribute to bind form data
         Order theOrder = new Order();
         theOrder.setRoomId(roomService.getRoomById(id));
-        theModel.addAttribute("order", theOrder);
+//        model.addAttribute("startDate", LocalDateTime.now());
+//        model.addAttribute("endDate", LocalDateTime.now());
+
+        model.addAttribute("order", theOrder);
 
         return "orders/order-form";
     }
@@ -40,7 +44,6 @@ public class OrderController {
     @PostMapping("/save")
     public String saveOrder(@ModelAttribute("order")Order order) {
         System.out.println(order + "in orderController");
-
             orderService.saveOrder(order);
             System.out.println(order + "passed try catch");
             return "redirect:/order/list" ;

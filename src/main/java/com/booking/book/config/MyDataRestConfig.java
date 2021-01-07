@@ -1,5 +1,6 @@
 package com.booking.book.config;
 
+import com.booking.book.entity.Order;
 import com.booking.book.entity.Room;
 import com.booking.book.entity.RoomCategory;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,6 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void  configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        config.exposeIdsFor(Room.class, RoomCategory.class);
+        config.exposeIdsFor(Room.class, RoomCategory.class, Order.class);
     }
 }

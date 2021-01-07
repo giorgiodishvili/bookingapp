@@ -1,11 +1,11 @@
 package com.booking.book.entity;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name="orders")
@@ -26,17 +26,21 @@ public class Order {
     private Room roomId;
 
     @Column(name = "date_start")
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
-    private LocalDateTime startDateTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @NotBlank(message="Arrival Date is Must")
+//    @NotNull
+    private LocalDate startDateTime;
 
     @Column(name = "date_end")
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
-    private LocalDateTime endDateTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @NotBlank(message="Departure Date is Must")
+//    @NotNull
+    private LocalDate endDateTime;
 
     public Order() {
     }
 
-    public Order(Long id, String customer, boolean active, Room roomId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+    public Order(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime) {
         this.id = id;
         this.customer = customer;
         this.active = active;
@@ -45,7 +49,7 @@ public class Order {
         this.endDateTime = endDateTime;
     }
 
-    public Order(String customer, boolean active, Room roomId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+    public Order(String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime) {
         this.customer = customer;
         this.active = active;
         this.roomId = roomId;
@@ -85,19 +89,20 @@ public class Order {
         this.roomId = roomId;
     }
 
-    public LocalDateTime getStartDateTime() {
+//    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
+    public LocalDate getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(LocalDateTime startDateTime) {
+    public void setStartDateTime(LocalDate startDateTime) {
         this.startDateTime = startDateTime;
     }
 
-    public LocalDateTime getEndDateTime() {
+    public LocalDate getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(LocalDateTime endDateTime) {
+    public void setEndDateTime(LocalDate endDateTime) {
         this.endDateTime = endDateTime;
     }
 

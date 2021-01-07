@@ -6,4 +6,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(collectionResourceRel = "roomCategory", path = "room-category")
 public interface RoomCategoryRepository extends JpaRepository<RoomCategory,Long> {
+
 }

@@ -7,22 +7,27 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
-import static java.util.Calendar.DATE;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     //TODO startDate meti unda iyos dgevandel dgeze axla erors agdebs radgan current_date unda sheecvalos formati. Possible sollution = current_date parametrad  migeba
-//:startDate > :curr_date and
-    @Query("from Order a where a.active = true and a.roomId = :typeId and  :startDate <= a.endDateTime and :endDate >= a.startDateTime")
-    List<Order> canBeAdded(@Param("typeId") Room id
-            , @Param("startDate") LocalDateTime startDate
-            , @Param("endDate") LocalDateTime endDate
-    //        , @Param("curr_date") LocalDate curr_date
+
+    @Query("from Order a where a.active = true and a.roomId = :roomId and  :startDate <= a.endDateTime and :endDate >= a.startDateTime")
+    List<Order> isTimeAvailableByRoomId(@Param("roomId") Room id
+            , @Param("startDate") LocalDate startDate
+            , @Param("endDate") LocalDate endDate
+                                        //        , @Param("curr_date") LocalDate curr_date
     );
+
+    @Query("select a.roomId from Order a where a.active = true and  :startDate <= a.endDateTime and :endDate >= a.startDateTime")
+    List<Room> roomIdNotAvailable(
+                @Param("startDate") LocalDate startDate
+            , @Param("endDate") LocalDate endDate
+    );
+
+
+
 }
 //findByActiveIsTrueAndRoomIdAndStartDateTimeIsGreaterThanAnd

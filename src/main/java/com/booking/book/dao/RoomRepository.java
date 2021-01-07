@@ -9,16 +9,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Set;
 
 
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
-    Page<Room> findByTypeId(@Param("id") Long id, Pageable pageable);
+    List<Room> findByTypeId(@Param("id") Long id);
 
-    //if this select returns data then room cant be added
-//    @Query("select a from Room a where a.type = :typeId and :startDate <= a.endDate and :endDate >= a.startDate")
-//    List<Room> canBeAdded(@Param("typeId") RoomCategory id
-//                          , @Param("startDate") String startDate
-//                          , @Param("endDate") String endDate
-//                          );
+    List<Room> findDistinctByIdNotIn(List<Long> ids);
+
+
 }

@@ -1,6 +1,7 @@
 package com.booking.book.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -58,4 +59,5 @@ public class RoomCategory {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }

@@ -1,9 +1,6 @@
 package com.booking.book.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity

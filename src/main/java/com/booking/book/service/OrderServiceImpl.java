@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,12 +31,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void saveOrder(Order order) {
-        //Date startDate = Date.from(order.getStartDateTime().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        //Date endDate = Date.from( .atStartOfDay(ZoneId.systemDefault()).toInstant());
-        List<Order> orders = orderRepository.canBeAdded(order.getRoomId() ,order.getStartDateTime(),order.getEndDateTime());
-        System.out.println(order.getStartDateTime());
 
-        if(orders.size() == 0){
+        List<Order> orders = orderRepository.isTimeAvailableByRoomId(order.getRoomId() ,order.getStartDateTime(),order.getEndDateTime());
+
+        int difference = order.getStartDateTime().compareTo(LocalDate.now());
+        boolean moreThanCurrentDate = difference >= 0;
+        if(orders.size() == 0 && moreThanCurrentDate){
 
             Order save = orderRepository.save(order);
             System.out.println(save + "saved");
