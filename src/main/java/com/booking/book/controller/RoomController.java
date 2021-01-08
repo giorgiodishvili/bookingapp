@@ -53,21 +53,20 @@ public class RoomController {
 //    }
 
     @GetMapping("/search")
-    public String search( @RequestParam(value = "category", required = false) Long categoryId,
-                              @RequestParam(value = "startDate", required = false)  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate startDate,
-                         @RequestParam(value = "endDate", required = false)  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  LocalDate endDate,
+    public String search(@RequestParam(value = "category", required = false) Long categoryId,
+                         @RequestParam(value = "startDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                         @RequestParam(value = "endDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
                          Model theModel) {
 
-        if(startDate != null && endDate != null && categoryId != null ){
-            List<Room> o = roomService.searchBy(categoryId,startDate,endDate);
+        if (startDate != null && endDate != null && categoryId != null) {
+            List<Room> o = roomService.searchBy(categoryId, startDate, endDate);
             List<RoomCategory> roomCategories = roomCategoryService.roomCategoryList();
             theModel.addAttribute("categories", roomCategories);
             theModel.addAttribute("rooms", o);
 
             // send to list-employees
             return "rooms/room-list";
-        }
-       else if (categoryId != null ) {
+        } else if (categoryId != null) {
 
 
             // add to the spring model
@@ -79,7 +78,7 @@ public class RoomController {
             // send to list-employees
             return "rooms/room-list";
 
-        }else if(startDate != null && endDate != null){
+        } else if (startDate != null && endDate != null) {
             // else, search by first name and last name
             List<Room> theRooms =
                     roomService.searchBy(startDate, endDate);
@@ -90,7 +89,7 @@ public class RoomController {
 
             // send to list-employees
             return "rooms/room-list";
-        }else {
+        } else {
             return "redirect:/rooms/list";
         }
 

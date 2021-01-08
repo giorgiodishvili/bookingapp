@@ -1,24 +1,22 @@
 package com.booking.book.entity;
 
-import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name="customer")
+    @Column(name = "customer")
     private String customer;
 
-    @Column(name="active")
+    @Column(name = "active")
     private boolean active = true;
 
     @ManyToOne
@@ -89,7 +87,7 @@ public class Order {
         this.roomId = roomId;
     }
 
-//    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
+    //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
     public LocalDate getStartDateTime() {
         return startDateTime;
     }
@@ -111,7 +109,7 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", customer='" + customer + '\'' +
-               // ", room= '" + roomId.getId() +
+                // ", room= '" + roomId.getId() +
                 ", active=" + active +
                 ", startDateTime='" + startDateTime + '\'' +
                 ", endDateTime='" + endDateTime + '\'' +

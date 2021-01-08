@@ -6,14 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class RoomCategoryServiceImpl implements RoomCategoryService{
+public class RoomCategoryServiceImpl implements RoomCategoryService {
 
     @Autowired
     private RoomCategoryRepository roomCategoryRepository;
 
     @Override
-    public List<RoomCategory> roomCategoryList(){
+    public List<RoomCategory> roomCategoryList() {
         return roomCategoryRepository.findAll();
     }
 

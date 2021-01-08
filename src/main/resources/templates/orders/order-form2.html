@@ -15,7 +15,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
         <a class="navbar-brand" href="/">Thymeleaf - Bootstrap Input Date</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,39 +44,40 @@
 <div class="container">
     <form action="#" th:action="@{/order/save}" method="post" th:object="${order}">
 
-        <input type="hidden" th:field="*{id}" />
-        <input type="hidden" th:field="*{roomId}" />
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{roomId}"/>
         <div class="form-group row">
             <div class="col-md-4 mt-5">
-            <label for="customer">Your Name:</label>
-            <input type="text" id="customer" placeholder="Customer" autocomplete="off" class="form-control"
-                   th:field="*{customer}"/>
+                <label for="customer">Your Name:</label>
+                <input type="text" id="customer" placeholder="Customer" autocomplete="off" class="form-control"
+                       th:field="*{customer}"/>
             </div>
         </div>
 
-<!--        <div class="form-group row">-->
-<!--            <div class="col-md-4 mt-5">-->
-<!--                <label for="birthdate">Date of birth</label>-->
-<!--                <div class="input-group date">-->
-<!--                    <input type="text" class="form-control" id="birthdate" autocomplete="off" th:field="*{birtdate}"/>-->
-<!--                    <div class="input-group-append">-->
-<!--                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="form-group row">-->
+        <!--            <div class="col-md-4 mt-5">-->
+        <!--                <label for="birthdate">Date of birth</label>-->
+        <!--                <div class="input-group date">-->
+        <!--                    <input type="text" class="form-control" id="birthdate" autocomplete="off" th:field="*{birtdate}"/>-->
+        <!--                    <div class="input-group-append">-->
+        <!--                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
 
 
         <div class="form-group row">
             <div class="col-md-4 mt-5">
-            <label for="startDate">Arrival:</label>
+                <label for="startDate">Arrival:</label>
                 <div class="input-group date">
-                    <input type="text" class="form-control" id="startDate" autocomplete="off" th:field="*{startDateTime}"/>
+                    <input type="text" class="form-control" id="startDate" autocomplete="off"
+                           th:field="*{startDateTime}"/>
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
                 </div>
-        </div>
+            </div>
         </div>
         <div class="form-group row">
             <div class="col-md-4 mt-5">

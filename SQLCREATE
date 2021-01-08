@@ -1,0 +1,53 @@
+//creates SQL scheme name = booking; and tables ....
+
+CREATE DATABASE booking /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */
+
+
+CREATE TABLE booking.room_category (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `room_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE booking.room (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `type_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_category` (`type_id`),
+  CONSTRAINT `fk_category` FOREIGN KEY (`type_id`) REFERENCES `room_category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE booking.orders (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `room_id` bigint DEFAULT NULL,
+  `customer` varchar(45) DEFAULT NULL,
+  `active` bit(1) DEFAULT b'1',
+  `date_start` date DEFAULT NULL,
+  `date_end` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_room_idx` (`room_id`),
+  CONSTRAINT `fk_room` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8
+
+
+INSERT INTO booking.room_category (`id`,`room_name`) VALUES (1,'single');
+INSERT INTO booking.room_category (`id`,`room_name`) VALUES (2,'double');
+
+INSERT INTO booking.room (`id`,`name`,`description`,`type_id`) VALUES (1,'Plaza','beautiful view',1);
+INSERT INTO booking.room (`id`,`name`,`description`,`type_id`) VALUES (2,'blue','midian',2);
+INSERT INTO booking.room (`id`,`name`,`description`,`type_id`) VALUES (3,'pikano','madanoo',1);
+INSERT INTO booking.room (`id`,`name`,`description`,`type_id`) VALUES (4,'nandee','soreeva',1);
+
+
+INSERT INTO booking.orders (`id`,`room_id`,`customer`,`active`,`date_start`,`date_end`) VALUES (1,1,'giorgi','1','2021-01-01','2021-01-03');
+INSERT INTO booking.orders (`id`,`room_id`,`customer`,`active`,`date_start`,`date_end`) VALUES (3,1,'s','1','2020-02-02','2020-03-02');
+INSERT INTO booking.orders (`id`,`room_id`,`customer`,`active`,`date_start`,`date_end`) VALUES (4,1,'abc','1','2001-02-02','2003-03-22');
+INSERT INTO booking.orders (`id`,`room_id`,`customer`,`active`,`date_start`,`date_end`) VALUES (5,2,'zaza','1','2001-03-20','2003-01-01');
+INSERT INTO booking.orders (`id`,`room_id`,`customer`,`active`,`date_start`,`date_end`) VALUES (6,1,'nika','1','2020-02-02','2021-02-02');
+INSERT INTO booking.orders (`id`,`room_id`,`customer`,`active`,`date_start`,`date_end`) VALUES (10,1,'','1','2023-05-16','2024-09-11');
+INSERT INTO booking.orders (`id`,`room_id`,`customer`,`active`,`date_start`,`date_end`) VALUES (11,2,'','1','2021-01-20','2021-01-28');
+INSERT INTO booking.orders (`id`,`room_id`,`customer`,`active`,`date_start`,`date_end`) VALUES (15,1,'','1','2021-03-01','2021-03-03');

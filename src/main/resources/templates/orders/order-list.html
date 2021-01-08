@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <title>Room List</title>
 </head>
@@ -45,6 +46,22 @@
 
 <!--    </form>-->
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+
+        <a class="navbar-brand" th:href="@{/order/list}">Order List</a>
+
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/rooms/list}">Hotel Rooms</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <table class="table table-bordered table-striped">
     <thead class="thead-dark">
     <tr>
@@ -60,18 +77,18 @@
     <tbody>
     <tr th:each="tempOrder : ${orders}">
 
-        <td th:text="${tempOrder.roomId.getName()}" />
-        <td th:text="${tempOrder.customer}" />
-        <td th:text="${tempOrder.active}" />
-        <td th:text="${tempOrder.startDateTime}" />
-        <td th:text="${tempOrder.endDateTime}" />
+        <td th:text="${tempOrder.roomId.getName()}"/>
+        <td th:text="${tempOrder.customer}"/>
+        <td th:text="${tempOrder.active}"/>
+        <td th:text="${tempOrder.startDateTime}"/>
+        <td th:text="${tempOrder.endDateTime}"/>
 
 
         <td>
 
-<!--        <a th:href="@{/order/change(employeeId=${tempEmployee.id})-->
-<!--           class="btn btn-info btn-sm"-->
-<!--           onclick="if (!(confirm('Are you sure you want to change status?'))) return false">Change Status</a>-->
+            <!--        <a th:href="@{/order/change(employeeId=${tempEmployee.id})-->
+            <!--           class="btn btn-info btn-sm"-->
+            <!--           onclick="if (!(confirm('Are you sure you want to change status?'))) return false">Change Status</a>-->
             <!--                &lt;!&ndash; Add "update" button/link &ndash;&gt;-->
             <!--                <a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.id})}"-->
             <!--                   class="btn btn-info btn-sm">-->
@@ -86,11 +103,11 @@
             <!--                </a>-->
 
             <!--               Add "update" button/link &ndash;-->
-<!--            <a th:href="@{/order/addOrder(roomId=${tempRoom.id})}"-->
-<!--               class="btn btn-info btn-sm">-->
-<!--                Order-->
-<!--            </a>-->
-</td>
+            <!--            <a th:href="@{/order/addOrder(roomId=${tempRoom.id})}"-->
+            <!--               class="btn btn-info btn-sm">-->
+            <!--                Order-->
+            <!--            </a>-->
+        </td>
 
 
     </tr>

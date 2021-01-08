@@ -13,8 +13,8 @@ public class BookApplication {
 
         TemplateEngine templateEngine = new TemplateEngine();
         templateEngine.addDialect(new Java8TimeDialect());
-        }
-
     }
+
+}
 
 

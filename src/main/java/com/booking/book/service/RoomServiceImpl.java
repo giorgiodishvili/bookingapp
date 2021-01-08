@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class RoomServiceImpl implements RoomService{
+public class RoomServiceImpl implements RoomService {
     @Autowired
     private RoomRepository roomRepository;
 
@@ -26,21 +26,22 @@ public class RoomServiceImpl implements RoomService{
 
 
     @Override
-    public List<Room> getAllRooms(){
+    public List<Room> getAllRooms() {
         return roomRepository.findAll();
     }
 
     @Override
-    public Room getRoomById(Long id){
+    public Room getRoomById(Long id) {
         Optional<Room> byId = roomRepository.findById(id);
-        if(byId.isEmpty()){
+        if (byId.isEmpty()) {
             throw new RuntimeException("Room not found");
-        }else{
+        } else {
             return byId.get();
         }
     }
+
     @Override
-    public void saveRoom(Room room){
+    public void saveRoom(Room room) {
         roomRepository.save(room);
     }
 
@@ -62,12 +63,12 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
-    public List<Room> searchBy(Long categoryId,LocalDate startDate, LocalDate endDate) {
+    public List<Room> searchBy(Long categoryId, LocalDate startDate, LocalDate endDate) {
 
         List<Room> roomNotAvailable = orderRepository.roomIdNotAvailable(startDate, endDate);
         System.out.println(roomNotAvailable);
         Optional<RoomCategory> byId = roomCategoryRepository.findById(categoryId);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             List<Long> ids = roomNotAvailable.stream()
                     .filter(peopleWithSameId -> peopleWithSameId.getType() == byId.get())
                     .map(Room::getId).collect(Collectors.toList());

@@ -1,23 +1,20 @@
 package com.booking.book.controller;
 
 import com.booking.book.entity.Order;
-import com.booking.book.entity.Room;
 import com.booking.book.service.OrderService;
 import com.booking.book.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
 @RequestMapping("/order")
 public class OrderController {
 
-    private OrderService orderService;
+    private final OrderService orderService;
 
     @Autowired
     private RoomService roomService;
@@ -28,7 +25,7 @@ public class OrderController {
     }
 
     @GetMapping("/addOrder")
-    public String showFormForOrder(@RequestParam("roomId")Long id,Model model) {
+    public String showFormForOrder(@RequestParam("roomId") Long id, Model model) {
 
         // create model attribute to bind form data
         Order theOrder = new Order();
@@ -42,23 +39,27 @@ public class OrderController {
     }
 
     @PostMapping("/save")
-    public String saveOrder(@ModelAttribute("order")Order order) {
-        System.out.println(order + "in orderController");
+    public String saveOrder(@ModelAttribute("order") Order order) {
+        try {
             orderService.saveOrder(order);
-            System.out.println(order + "passed try catch");
-            return "redirect:/order/list" ;
+        } catch (RuntimeException e) {
+            return "redirect:" + ("/orders/order-form?roomId=" + order.getRoomId().getId());
+        }
+
+        return "redirect:/order/list";
+
     }
 
     @GetMapping("/single/{id}")
-    public String getSingleOrder(@PathVariable("id")Long id,Model theModel){
+    public String getSingleOrder(@PathVariable("id") Long id, Model theModel) {
         Order orderById = orderService.getOrderById(id);
-theModel.addAttribute("order", orderById);
+        theModel.addAttribute("order", orderById);
         // redirect to /employees/list
         return "orders/single-order";
     }
 
     @GetMapping("/list")
-    public String getAllOrders(Model theModel){
+    public String getAllOrders(Model theModel) {
         List<Order> theOrders = orderService.getAllOrders();
 
         // add to the spring model
@@ -66,7 +67,6 @@ theModel.addAttribute("order", orderById);
         return "orders/order-list";
 
     }
-
 
 
 }

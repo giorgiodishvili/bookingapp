@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface RoomCategoryService {
 
-    public List<RoomCategory> roomCategoryList();
+    List<RoomCategory> roomCategoryList();
 }

@@ -22,9 +22,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getOrderById(Long id) {
         Optional<Order> byId = orderRepository.findById(id);
-        if(byId.isEmpty()){
+        if (byId.isEmpty()) {
             throw new RuntimeException("Room not found");
-        }else{
+        } else {
             return byId.get();
         }
     }
@@ -32,16 +32,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void saveOrder(Order order) {
 
-        List<Order> orders = orderRepository.isTimeAvailableByRoomId(order.getRoomId() ,order.getStartDateTime(),order.getEndDateTime());
+        List<Order> orders = orderRepository.isTimeAvailableByRoomId(order.getRoomId(), order.getStartDateTime(), order.getEndDateTime());
 
         int difference = order.getStartDateTime().compareTo(LocalDate.now());
         boolean moreThanCurrentDate = difference >= 0;
-        if(orders.size() == 0 && moreThanCurrentDate){
+        if (orders.size() == 0 && moreThanCurrentDate) {
 
             Order save = orderRepository.save(order);
-            System.out.println(save + "saved");
-        }
-        else{
+        } else {
 
             throw new RuntimeException("Cant be added");
         }
