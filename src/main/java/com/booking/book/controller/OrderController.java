@@ -16,12 +16,13 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @Autowired
-    private RoomService roomService;
+    // შენ აქედანაც გინდა დააინჯექტო და იქიდანაც გინდა დააინჯექტო ? :D
+    private final RoomService roomService;
 
     @Autowired
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderService orderService, RoomService roomService) {
         this.orderService = orderService;
+        this.roomService = roomService;
     }
 
     @GetMapping("/addOrder")
