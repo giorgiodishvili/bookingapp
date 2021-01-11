@@ -14,5 +14,7 @@ public interface OrderService {
 
     void deleteById(Long theId);
 
+    void removeOrder(Long id);
+
 
 }

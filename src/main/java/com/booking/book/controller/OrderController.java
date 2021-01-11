@@ -58,6 +58,14 @@ public class OrderController {
         return "orders/single-order";
     }
 
+
+    @GetMapping("/delete")
+    public String deleteOrder(@RequestParam("orderId") Long id, Model theModel) {
+        orderService.deleteById(id);
+        // redirect to /employees/list
+        return "redirect:/order/list";
+    }
+
     @GetMapping("/list")
     public String getAllOrders(Model theModel) {
         List<Order> theOrders = orderService.getAllOrders();
