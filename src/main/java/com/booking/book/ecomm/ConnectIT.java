@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.*;
 import java.security.cert.CertificateException;
+
 /**
  * Demonstrate connecting to a server secured with client-side SSL certificates.
  */

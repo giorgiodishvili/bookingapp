@@ -4,7 +4,6 @@ import com.booking.book.entity.Room;
 import com.booking.book.entity.RoomCategory;
 import com.booking.book.service.RoomCategoryService;
 import com.booking.book.service.RoomService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +18,16 @@ import java.util.List;
 @RequestMapping("/rooms")
 public class RoomController {
 
-    @Autowired
-    private RoomService roomService;
 
-    @Autowired
-    private RoomCategoryService roomCategoryService;
+    private final RoomService roomService;
+
+
+    private final RoomCategoryService roomCategoryService;
+
+    public RoomController(RoomService roomService, RoomCategoryService roomCategoryService) {
+        this.roomService = roomService;
+        this.roomCategoryService = roomCategoryService;
+    }
 
     @GetMapping("/list")
     public String listRooms(Model theModel) {

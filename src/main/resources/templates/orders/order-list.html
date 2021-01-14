@@ -95,12 +95,12 @@
             <!--                    Update-->
             <!--                </a>-->
 
-                            <!-- Add "delete" button/link -->
-                            <a th:href="@{/order/delete(orderId=${tempOrder.id})}"
-                               class="btn btn-danger btn-sm"
-                               onclick="if (!(confirm('Are you sure you want to delete this order?'))) return false">
-                                Delete
-                            </a>
+            <!-- Add "delete" button/link -->
+            <a th:href="@{/order/delete(orderId=${tempOrder.id})}"
+               class="btn btn-danger btn-sm"
+               onclick="if (!(confirm('Are you sure you want to delete this order?'))) return false">
+                Delete
+            </a>
 
             <!--               Add "update" button/link &ndash;-->
             <!--            <a th:href="@{/order/addOrder(roomId=${tempRoom.id})}"-->

@@ -3,7 +3,6 @@ package com.booking.book.ecomm;
 import com.booking.book.entity.Order;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.minidev.json.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class Command  {
+public class Command {
 
     private final ConnectIT connector;
 
@@ -74,16 +73,16 @@ public class Command  {
             JsonNode jsonNode = objectMapper.readTree(merchantHandlerResponse);
             String transaction_id = jsonNode.get("TRANSACTION_ID").asText();
 
-                //set tran id to this order...
-                order.setTransactionId(transaction_id);
+            //set tran id to this order...
+            order.setTransactionId(transaction_id);
 
-                List<NameValuePair> tranId = new ArrayList<>();
-                tranId.add(new BasicNameValuePair("trans_id", order.getTransactionId()));
-                UrlEncodedFormEntity entity2 = new UrlEncodedFormEntity(tranId, "UTF-8");
-                clientHandler.setEntity(entity2);
+            List<NameValuePair> tranId = new ArrayList<>();
+            tranId.add(new BasicNameValuePair("trans_id", order.getTransactionId()));
+            UrlEncodedFormEntity entity2 = new UrlEncodedFormEntity(tranId, "UTF-8");
+            clientHandler.setEntity(entity2);
 
-                //Post to client handler
-                CloseableHttpResponse clientHandlerResponse =  HttpClients.createDefault().execute(clientHandler);
+            //Post to client handler
+            CloseableHttpResponse clientHandlerResponse = HttpClients.createDefault().execute(clientHandler);
 
 
         }

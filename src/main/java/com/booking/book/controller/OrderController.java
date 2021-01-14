@@ -8,12 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
 import java.util.List;
 
 @Controller
@@ -47,23 +41,21 @@ public class OrderController {
     public String saveOrder(@ModelAttribute("order") Order order) {
         try {
             orderService.saveOrder(order);
-        } catch (RuntimeException | CertificateException | UnrecoverableKeyException | NoSuchAlgorithmException | IOException | KeyManagementException | KeyStoreException e) {
+        } catch (RuntimeException e) {
             return "redirect:" + ("/orders/order-form?roomId=" + order.getRoomId().getId());
         }
-
         return "redirect:/order/list";
-
     }
 
-//    @GetMapping("/result/ok")
-//    public String getOkResult(@RequestParam("trans_id") String id, Model theModel) {
-////        Order orderById = orderService.result(id);
-//
-////        theModel.addAttribute("order", );
-//
-//
-//        return "orders/single-order";
-//    }
+    @GetMapping("/result/ok")
+    public String getOkResult(@RequestParam("trans_id") String id, Model theModel) {
+//        Order orderById = orderService.result(id);
+
+//        theModel.addAttribute("order", );
+
+
+        return "orders/single-order";
+    }
 
 
     @GetMapping("/single/{id}")

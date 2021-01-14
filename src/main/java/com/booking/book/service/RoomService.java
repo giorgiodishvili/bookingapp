@@ -20,7 +20,8 @@ public class RoomService {
 
     private final OrderRepository orderRepository;
 
-    private  final RoomCategoryRepository roomCategoryRepository;
+    private final RoomCategoryRepository roomCategoryRepository;
+
     @Autowired
     public RoomService(RoomRepository roomRepository, OrderRepository orderRepository, RoomCategoryRepository roomCategoryRepository) {
         this.roomRepository = roomRepository;
@@ -32,7 +33,9 @@ public class RoomService {
         return roomRepository.findAll();
     }
 
-    public Room getRoomById(Long id) { return roomRepository.findById(id).orElseThrow(OrderNotFoundException::new);  }
+    public Room getRoomById(Long id) {
+        return roomRepository.findById(id).orElseThrow(OrderNotFoundException::new);
+    }
 
     public void saveRoom(Room room) {
         roomRepository.save(room);
@@ -59,10 +62,10 @@ public class RoomService {
         RoomCategory roomCategory = roomCategoryRepository.findById(categoryId).orElseThrow(RoomCategoryIdNotFoundException::new);
 
         List<Long> ids = roomNotAvailable.stream()
-                    .filter(peopleWithSameId -> peopleWithSameId.getType() == roomCategory)
-                    .map(Room::getId).collect(Collectors.toList());
+                .filter(peopleWithSameId -> peopleWithSameId.getType() == roomCategory)
+                .map(Room::getId).collect(Collectors.toList());
 
-            return roomRepository.findDistinctByIdNotIn(ids);
+        return roomRepository.findDistinctByIdNotIn(ids);
 
     }
 
