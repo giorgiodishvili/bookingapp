@@ -35,6 +35,21 @@ public class Order {
 //    @NotNull
     private LocalDate endDateTime;
 
+    @Column(name = "amount")
+    private Long amount;
+
+    @Column(name = "transaction_id")
+    private String transactionId;
+
+    @Column(name = "rrn")
+    private String rrn;
+
+    @Column(name = "result_code")
+    private String resultCode;
+
+    @Column(name = "masked_card")
+    private String maskedCard;
+
     public Order() {
     }
 
@@ -53,6 +68,31 @@ public class Order {
         this.roomId = roomId;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
+    }
+
+    public Order(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime, Long amount, String transactionId) {
+        this.id = id;
+        this.customer = customer;
+        this.active = active;
+        this.roomId = roomId;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.amount = amount;
+        this.transactionId = transactionId;
+    }
+
+    public Order(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime, Long amount, String transactionId, String rrn, String resultCode, String maskedCard) {
+        this.id = id;
+        this.customer = customer;
+        this.active = active;
+        this.roomId = roomId;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.amount = amount;
+        this.transactionId = transactionId;
+        this.rrn = rrn;
+        this.resultCode = resultCode;
+        this.maskedCard = maskedCard;
     }
 
     public Long getId() {
@@ -102,6 +142,46 @@ public class Order {
 
     public void setEndDateTime(LocalDate endDateTime) {
         this.endDateTime = endDateTime;
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public String getRrn() {
+        return rrn;
+    }
+
+    public void setRrn(String rrn) {
+        this.rrn = rrn;
+    }
+
+    public String getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(String resultCode) {
+        this.resultCode = resultCode;
+    }
+
+    public String getMaskedCard() {
+        return maskedCard;
+    }
+
+    public void setMaskedCard(String maskedCard) {
+        this.maskedCard = maskedCard;
     }
 
     @Override

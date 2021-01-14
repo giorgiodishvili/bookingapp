@@ -1,10 +1,18 @@
 package com.booking.book.service;
 
+import com.booking.book.ecomm.ConnectIT;
 import com.booking.book.dao.OrderRepository;
 import com.booking.book.entity.Order;
+import com.booking.book.exception.OrderCanNotBeAddedException;
 import com.booking.book.exception.OrderNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,6 +20,8 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+
+
 
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
@@ -31,17 +41,20 @@ public class OrderService {
 
         int difference = order.getStartDateTime().compareTo(LocalDate.now());
         boolean moreThanCurrentDate = difference >= 0;
+
         if (orders.size() == 0 && moreThanCurrentDate) {
-
-            Order save = orderRepository.save(order);
+            orderRepository.save(order);
         } else {
-
-            throw new RuntimeException("Cant be added");
+            throw new OrderCanNotBeAddedException();
         }
     }
 
     public void deleteById(Long theId) {
         orderRepository.deleteById(theId);
+    }
+
+    public List<Order> getOrderByTranId(String id){
+        return orderRepository.findByTransactionId(id);
     }
 
     public void removeOrder(Long id) {
