@@ -5,8 +5,8 @@ import com.booking.book.dao.RoomCategoryRepository;
 import com.booking.book.dao.RoomRepository;
 import com.booking.book.entity.Room;
 import com.booking.book.entity.RoomCategory;
-import com.booking.book.exception.OrderNotFoundException;
 import com.booking.book.exception.RoomCategoryIdNotFoundException;
+import com.booking.book.exception.RoomNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +29,10 @@ public class RoomService {
         this.roomCategoryRepository = roomCategoryRepository;
     }
 
-    public List<Room> getAllRooms() {
-        return roomRepository.findAll();
-    }
-
+    //საჭიროა ისე ექსეფშენების სროლა ? ფრონზე რო null-ზე შემოჭმდეს ხო არ ჯობია ?
+    // და არ იქნება ამ დამატებითი მეთოდების დაწერა საჭირო
     public Room getRoomById(Long id) {
-        return roomRepository.findById(id).orElseThrow(OrderNotFoundException::new);
+        return roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
     }
 
     public void saveRoom(Room room) {

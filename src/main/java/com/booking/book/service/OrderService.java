@@ -1,7 +1,7 @@
 package com.booking.book.service;
 
 import com.booking.book.dao.OrderRepository;
-import com.booking.book.entity.Order;
+import com.booking.book.entity.Orders;
 import com.booking.book.exception.OrderCanNotBeAddedException;
 import com.booking.book.exception.OrderNotFoundException;
 import org.springframework.stereotype.Service;
@@ -19,37 +19,30 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public List<Order> getAllOrders() {
-        return orderRepository.findAll();
+    public List<Orders> getAllOrders() {
+        return orderRepository.all();
     }
 
-    public Order getOrderById(Long id) {
+    public Orders getOrderById(Long id) {
         return orderRepository.findById(id).orElseThrow(OrderNotFoundException::new);
     }
 
-    public void saveOrder(Order order) {
+    public Orders saveOrder(Orders order) {
 
-        List<Order> orders = orderRepository.isTimeAvailableByRoomId(order.getRoomId(), order.getStartDateTime(), order.getEndDateTime());
+        List<Orders> orders = orderRepository.isTimeAvailableByRoomId(order.getRoomId(), order.getStartDateTime(), order.getEndDateTime());
 
         int difference = order.getStartDateTime().compareTo(LocalDate.now());
+
         boolean moreThanCurrentDate = difference >= 0;
 
         if (orders.size() == 0 && moreThanCurrentDate) {
-            orderRepository.save(order);
+            return orderRepository.save(order);
         } else {
             throw new OrderCanNotBeAddedException();
         }
     }
 
-    public void deleteById(Long theId) {
-        orderRepository.deleteById(theId);
-    }
-
-    public List<Order> getOrderByTranId(String id) {
+    public List<Orders> getOrderByTranId(String id) {
         return orderRepository.findByTransactionId(id);
-    }
-
-    public void removeOrder(Long id) {
-        orderRepository.deleteById(id);
     }
 }

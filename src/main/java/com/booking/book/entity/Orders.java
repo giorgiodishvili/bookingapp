@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,14 +25,10 @@ public class Order {
 
     @Column(name = "date_start")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @NotBlank(message="Arrival Date is Must")
-//    @NotNull
     private LocalDate startDateTime;
 
     @Column(name = "date_end")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @NotBlank(message="Departure Date is Must")
-//    @NotNull
     private LocalDate endDateTime;
 
     @Column(name = "amount")
@@ -50,10 +46,10 @@ public class Order {
     @Column(name = "masked_card")
     private String maskedCard;
 
-    public Order() {
+    public Orders() {
     }
 
-    public Order(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime) {
+    public Orders(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime) {
         this.id = id;
         this.customer = customer;
         this.active = active;
@@ -62,7 +58,7 @@ public class Order {
         this.endDateTime = endDateTime;
     }
 
-    public Order(String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime) {
+    public Orders(String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime) {
         this.customer = customer;
         this.active = active;
         this.roomId = roomId;
@@ -70,7 +66,7 @@ public class Order {
         this.endDateTime = endDateTime;
     }
 
-    public Order(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime, Long amount, String transactionId) {
+    public Orders(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime, Long amount, String transactionId) {
         this.id = id;
         this.customer = customer;
         this.active = active;
@@ -81,7 +77,7 @@ public class Order {
         this.transactionId = transactionId;
     }
 
-    public Order(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime, Long amount, String transactionId, String rrn, String resultCode, String maskedCard) {
+    public Orders(Long id, String customer, boolean active, Room roomId, LocalDate startDateTime, LocalDate endDateTime, Long amount, String transactionId, String rrn, String resultCode, String maskedCard) {
         this.id = id;
         this.customer = customer;
         this.active = active;

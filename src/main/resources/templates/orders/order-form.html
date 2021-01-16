@@ -1,112 +1,112 @@
-<!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
+<!--<!DOCTYPE HTML>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8"/>-->
 
-    <title>ORDER ROOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!--    <title>ORDER ROOM</title>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">-->
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head>
-<body>
+<!--    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+<!--    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+<!--    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+<!--</head>-->
+<!--<body>-->
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">Booking Form</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" sr-only th:href="@{/rooms/list}">Home
-                        <span class="">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--&lt;!&ndash; Navigation &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">-->
+<!--    <div class="container">-->
+<!--        <a class="navbar-brand" href="#">Booking Form</a>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"-->
+<!--                aria-controls="navbarResponsive"-->
+<!--                aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
+<!--            <ul class="navbar-nav ml-auto">-->
+<!--                <li class="nav-item active">-->
+<!--                    <a class="nav-link" sr-only th:href="@{/rooms/list}">Home-->
+<!--                        <span class="">(current)</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">About</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Services</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Contact</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
 
-<div class="container">
+<!--<div class="container">-->
 
-    <div class="row">
-        <div class="col-md-4 mt-5">
-            <form action="#" th:action="@{/order/save}" method="post" th:object="${order}">
+<!--    <div class="row">-->
+<!--        <div class="col-md-4 mt-5">-->
+<!--            <form action="#" th:action="@{/orders/save}" method="post" th:object="${orders}">-->
 
-                <input type="hidden" th:field="*{id}"/>
-                <input type="hidden" th:field="*{roomId}"/>
-
-
-                <div class="form-group">
-                    <label for="customer">Your Name:</label>
-                    <input type="text" id="customer" placeholder="Customer" autocomplete="off" class="form-control"
-                           th:field="*{customer}"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="startDate">Arrival:</label>
-                    <input type="date" class="input-sm form-control"
-                           name="start"
-                           th:field="*{startDateTime}"
-                           id="startDate"
-                           placeholder="MM/DD/YYYY"/>
-                    <span th:if="${#fields.hasErrors('startDateTime')}"
-                          th:errors="*{startDateTime}"
-                          class="badge badge-danger ml-2 mb-4"></span>
-                </div>
+<!--                <input type="hidden" th:field="*{id}"/>-->
+<!--                <input type="hidden" th:field="*{roomId}"/>-->
 
 
-                <div class="form-group">
-                    <label for="endDate">Departure:</label>
-                    <input type="date" class="input-sm form-control"
-                           name="end"
-                           th:field="*{endDateTime}"
-                           id="endDate"
-                           placeholder="MM/DD/YYYY"
-                    />
-                    <span th:if="${#fields.hasErrors('endDateTime')}"
-                          th:errors="*{endDateTime}"
-                          class="badge badge-danger ml-2 mb-4"></span>
+<!--                <div class="form-group">-->
+<!--                    <label for="customer">Your Name:</label>-->
+<!--                    <input type="text" id="customer" placeholder="Customer" autocomplete="off" class="form-control"-->
+<!--                           th:field="*{customer}"/>-->
+<!--                </div>-->
 
-                </div>
-                <!--                <span th:if="${errorMessage}" th:text="${errorMessage}">Error</span>-->
-                <button class="btn btn-primary" type="submit">Submit form</button>
-
-
-            </form>
-            <a class="navbar-brand" th:href="@{/rooms/list}">Back to Room List</a>
-        </div>
-    </div>
-</div>
+<!--                <div class="form-group">-->
+<!--                    <label for="startDate">Arrival:</label>-->
+<!--                    <input type="date" class="input-sm form-control"-->
+<!--                           name="start"-->
+<!--                           th:field="*{startDateTime}"-->
+<!--                           id="startDate"-->
+<!--                           placeholder="MM/DD/YYYY"/>-->
+<!--                    <span th:if="${#fields.hasErrors('startDateTime')}"-->
+<!--                          th:errors="*{startDateTime}"-->
+<!--                          class="badge badge-danger ml-2 mb-4"></span>-->
+<!--                </div>-->
 
 
-<script>
-    document.getElementById("startDate").min = new Date().toISOString().split("T")[0];
-    document.getElementById("endDate").min = new Date().toISOString().split("T")[0];
-    document.body.addEventListener('input', () => {
-        const val = document.getElementById('startDate')
-        document.getElementById("endDate").min = val.value;
-        console.log(val);
-    });
-</script>
+<!--                <div class="form-group">-->
+<!--                    <label for="endDate">Departure:</label>-->
+<!--                    <input type="date" class="input-sm form-control"-->
+<!--                           name="end"-->
+<!--                           th:field="*{endDateTime}"-->
+<!--                           id="endDate"-->
+<!--                           placeholder="MM/DD/YYYY"-->
+<!--                    />-->
+<!--                    <span th:if="${#fields.hasErrors('endDateTime')}"-->
+<!--                          th:errors="*{endDateTime}"-->
+<!--                          class="badge badge-danger ml-2 mb-4"></span>-->
+
+<!--                </div>-->
+<!--                &lt;!&ndash;                <span th:if="${errorMessage}" th:text="${errorMessage}">Error</span>&ndash;&gt;-->
+<!--                <button class="btn btn-primary" type="submit">Submit form</button>-->
 
 
-</body>
-</html>
+<!--            </form>-->
+<!--            <a class="navbar-brand" th:href="@{/rooms/list}">Back to Room List</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<script>-->
+<!--    document.getElementById("startDate").min = new Date().toISOString().split("T")[0];-->
+<!--    document.getElementById("endDate").min = new Date().toISOString().split("T")[0];-->
+<!--    document.body.addEventListener('input', () => {-->
+<!--        const val = document.getElementById('startDate')-->
+<!--        document.getElementById("endDate").min = val.value;-->
+<!--        console.log(val);-->
+<!--    });-->
+<!--</script>-->
+
+
+<!--</body>-->
+<!--</html>-->

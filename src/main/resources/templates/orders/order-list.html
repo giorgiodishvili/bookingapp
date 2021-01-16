@@ -1,123 +1,123 @@
-<!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE HTML>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--<head>-->
+<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"-->
+<!--          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
 
-    <title>Room List</title>
-</head>
+<!--    <title>Room List</title>-->
+<!--</head>-->
 
-<body>
+<!--<body>-->
 
-<!--<div class="container">-->
+<!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
 
-<!--    <h3>Employee Directory</h3>-->
-<!--    <hr>-->
+<!--&lt;!&ndash;    <h3>Employee Directory</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;    <hr>&ndash;&gt;-->
 
-<!--    &lt;!&ndash; Add a search form &ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash; Add a search form &ndash;&gt;&ndash;&gt;-->
 
-<!--    <form action="#" th:action="@{/employees/search}"-->
-<!--          method="GET" class="form-inline">-->
+<!--&lt;!&ndash;    <form action="#" th:action="@{/employees/search}"&ndash;&gt;-->
+<!--&lt;!&ndash;          method="GET" class="form-inline">&ndash;&gt;-->
 
-<!--        &lt;!&ndash; Add a button &ndash;&gt;-->
-<!--        <a th:href="@{/employees/showFormForAdd}"-->
-<!--           class="btn btn-primary btn-sm mb-3">-->
-<!--            Add Employee-->
-<!--        </a>-->
+<!--&lt;!&ndash;        &lt;!&ndash; Add a button &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <a th:href="@{/employees/showFormForAdd}"&ndash;&gt;-->
+<!--&lt;!&ndash;           class="btn btn-primary btn-sm mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;            Add Employee&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
 
-<!--        <input type="search"-->
-<!--               name="firstName"-->
-<!--               placeholder="First name"-->
-<!--               class="form-control-sm ml-5 mr-2 mb-3" />-->
+<!--&lt;!&ndash;        <input type="search"&ndash;&gt;-->
+<!--&lt;!&ndash;               name="firstName"&ndash;&gt;-->
+<!--&lt;!&ndash;               placeholder="First name"&ndash;&gt;-->
+<!--&lt;!&ndash;               class="form-control-sm ml-5 mr-2 mb-3" />&ndash;&gt;-->
 
-<!--        <input type="search"-->
-<!--               name="lastName"-->
-<!--               placeholder="Last name"-->
-<!--               class="form-control-sm mr-2 mb-3" />-->
+<!--&lt;!&ndash;        <input type="search"&ndash;&gt;-->
+<!--&lt;!&ndash;               name="lastName"&ndash;&gt;-->
+<!--&lt;!&ndash;               placeholder="Last name"&ndash;&gt;-->
+<!--&lt;!&ndash;               class="form-control-sm mr-2 mb-3" />&ndash;&gt;-->
 
-<!--        <button type="submit"-->
-<!--                class="btn btn-success btn-sm mb-3">Search</button>-->
+<!--&lt;!&ndash;        <button type="submit"&ndash;&gt;-->
+<!--&lt;!&ndash;                class="btn btn-success btn-sm mb-3">Search</button>&ndash;&gt;-->
 
-<!--    </form>-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">-->
+<!--    <div class="container">-->
 
-        <a class="navbar-brand" th:href="@{/order/list}">Order List</a>
-
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/rooms/list}">Hotel Rooms</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<table class="table table-bordered table-striped">
-    <thead class="thead-dark">
-    <tr>
-        <th>Name</th>
-        <th>description</th>
-        <th>Type</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr th:each="tempOrder : ${orders}">
-
-        <td th:text="${tempOrder.roomId.getName()}"/>
-        <td th:text="${tempOrder.customer}"/>
-        <td th:text="${tempOrder.active}"/>
-        <td th:text="${tempOrder.startDateTime}"/>
-        <td th:text="${tempOrder.endDateTime}"/>
+<!--        <a class="navbar-brand" th:href="@{/orders/list}">Order List</a>-->
 
 
-        <td>
+<!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
+<!--            <ul class="navbar-nav ml-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/rooms/list}">Hotel Rooms</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
 
-            <!--        <a th:href="@{/order/change(employeeId=${tempEmployee.id})-->
-            <!--           class="btn btn-info btn-sm"-->
-            <!--           onclick="if (!(confirm('Are you sure you want to change status?'))) return false">Change Status</a>-->
-            <!--                &lt;!&ndash; Add "update" button/link &ndash;&gt;-->
-            <!--                <a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.id})}"-->
-            <!--                   class="btn btn-info btn-sm">-->
-            <!--                    Update-->
-            <!--                </a>-->
+<!--<table class="table table-bordered table-striped">-->
+<!--    <thead class="thead-dark">-->
+<!--    <tr>-->
+<!--        <th>Name</th>-->
+<!--        <th>description</th>-->
+<!--        <th>Type</th>-->
+<!--        <th>Start Date</th>-->
+<!--        <th>End Date</th>-->
+<!--        <th>Action</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
 
-            <!-- Add "delete" button/link -->
-            <a th:href="@{/order/delete(orderId=${tempOrder.id})}"
-               class="btn btn-danger btn-sm"
-               onclick="if (!(confirm('Are you sure you want to delete this order?'))) return false">
-                Delete
-            </a>
+<!--    <tbody>-->
+<!--    <tr th:each="tempOrder : ${orders}">-->
 
-            <!--               Add "update" button/link &ndash;-->
-            <!--            <a th:href="@{/order/addOrder(roomId=${tempRoom.id})}"-->
-            <!--               class="btn btn-info btn-sm">-->
-            <!--                Order-->
-            <!--            </a>-->
-        </td>
+<!--        <td th:text="${tempOrder.roomId.getName()}"/>-->
+<!--        <td th:text="${tempOrder.customer}"/>-->
+<!--        <td th:text="${tempOrder.active}"/>-->
+<!--        <td th:text="${tempOrder.startDateTime}"/>-->
+<!--        <td th:text="${tempOrder.endDateTime}"/>-->
 
 
-    </tr>
-    </tbody>
-</table>
+<!--        <td>-->
 
-</div>
+<!--            &lt;!&ndash;        <a th:href="@{/orders/change(employeeId=${tempEmployee.id})&ndash;&gt;-->
+<!--            &lt;!&ndash;           class="btn btn-info btn-sm"&ndash;&gt;-->
+<!--            &lt;!&ndash;           onclick="if (!(confirm('Are you sure you want to change status?'))) return false">Change Status</a>&ndash;&gt;-->
+<!--            &lt;!&ndash;                &lt;!&ndash; Add "update" button/link &ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;                <a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.id})}"&ndash;&gt;-->
+<!--            &lt;!&ndash;                   class="btn btn-info btn-sm">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    Update&ndash;&gt;-->
+<!--            &lt;!&ndash;                </a>&ndash;&gt;-->
 
-</body>
-</html>
+<!--            &lt;!&ndash; Add "delete" button/link &ndash;&gt;-->
+<!--            <a th:href="@{/orders/delete(orderId=${tempOrder.id})}"-->
+<!--               class="btn btn-danger btn-sm"-->
+<!--               onclick="if (!(confirm('Are you sure you want to delete this orders?'))) return false">-->
+<!--                Delete-->
+<!--            </a>-->
+
+<!--            &lt;!&ndash;               Add "update" button/link &ndash;&ndash;&gt;-->
+<!--            &lt;!&ndash;            <a th:href="@{/orders/addOrder(roomId=${tempRoom.id})}"&ndash;&gt;-->
+<!--            &lt;!&ndash;               class="btn btn-info btn-sm">&ndash;&gt;-->
+<!--            &lt;!&ndash;                Order&ndash;&gt;-->
+<!--            &lt;!&ndash;            </a>&ndash;&gt;-->
+<!--        </td>-->
+
+
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
 
 
 

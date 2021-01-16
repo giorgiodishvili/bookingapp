@@ -1,5 +1,7 @@
 package com.booking.book.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -23,7 +25,8 @@ public class Room {
     private String description;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "roomId")
-    private Set<Order> orders;
+    @JsonIgnore
+    private Set<Orders> orders;
 
 
     public Room() {

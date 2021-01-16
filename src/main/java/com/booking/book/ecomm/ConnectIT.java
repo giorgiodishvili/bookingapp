@@ -62,6 +62,7 @@ public class ConnectIT {
                 .register("http", new PlainConnectionSocketFactory())
                 .build();
         HttpClientConnectionManager ccm = new BasicHttpClientConnectionManager(registry);
+
         return builder.setConnectionManager(ccm).build();
 
         // Perform a sample HTTP request.

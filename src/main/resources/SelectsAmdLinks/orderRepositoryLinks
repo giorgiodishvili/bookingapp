@@ -1,0 +1,11 @@
+< api link >
+http://localhost:8090/api/orders/ (Post Disabled)
+http://localhost:8090/api/rooms/
+http://localhost:8090/api/room-categories/
+
+< default link for orders>
+http://localhost:8090/orders/
+http://localhost:8090/rooms/
+
+< Save Order (Order should be saved with this link)>
+http://localhost:8090/orders/save

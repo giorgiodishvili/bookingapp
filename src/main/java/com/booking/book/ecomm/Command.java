@@ -1,6 +1,6 @@
 package com.booking.book.ecomm;
 
-import com.booking.book.entity.Order;
+import com.booking.book.entity.Orders;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
@@ -37,18 +37,18 @@ public class Command {
         this.connector = connector;
     }
 
-    public void chargeMoney(Order order) throws IOException, UnrecoverableKeyException, CertificateException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+    public void chargeMoney(Orders orders) throws IOException, UnrecoverableKeyException, CertificateException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         //getting connection with certificate
         CloseableHttpClient httpclient = connector.sslConnect();
 
         //adding parameters to the url...
         List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("command", "v"));
-        params.add(new BasicNameValuePair("amount", String.valueOf(order.getAmount())));
+        params.add(new BasicNameValuePair("amount", String.valueOf(orders.getAmount())));
         params.add(new BasicNameValuePair("currency", "981"));
         params.add(new BasicNameValuePair("client_ip_addr", "10.12.12.2"));
         params.add(new BasicNameValuePair("language", "EN"));
-        params.add(new BasicNameValuePair("description", "Order : " + order.getId()));
+        params.add(new BasicNameValuePair("description", "Order : " + orders.getId()));
         params.add(new BasicNameValuePair("msg_type", "SMS"));
 
         //encoding parameters
@@ -74,10 +74,10 @@ public class Command {
             String transaction_id = jsonNode.get("TRANSACTION_ID").asText();
 
             //set tran id to this order...
-            order.setTransactionId(transaction_id);
+            orders.setTransactionId(transaction_id);
 
             List<NameValuePair> tranId = new ArrayList<>();
-            tranId.add(new BasicNameValuePair("trans_id", order.getTransactionId()));
+            tranId.add(new BasicNameValuePair("trans_id", orders.getTransactionId()));
             UrlEncodedFormEntity entity2 = new UrlEncodedFormEntity(tranId, "UTF-8");
             clientHandler.setEntity(entity2);
 
